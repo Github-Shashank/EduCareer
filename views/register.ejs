@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Register | AI Career Advisor</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="auth-wrapper">
+      <section class="card">
+        <h1>Create Student Account</h1>
+        <% if (error) { %>
+        <p class="error"><%= error %></p>
+        <% } %>
+        <form method="post" action="/register">
+          <label>Full Name</label>
+          <input type="text" name="name" required />
+          <label>Email</label>
+          <input type="email" name="email" required />
+          <label>Password</label>
+          <input type="password" name="password" minlength="6" required />
+          <label>Grade / Year</label>
+          <input type="text" name="grade" placeholder="e.g. 12th Grade / 2nd Year" />
+          <label>Interests (comma separated)</label>
+          <input type="text" name="interests" placeholder="e.g. coding, biology, writing" />
+          <label>Career Goal</label>
+          <textarea name="goals" rows="3" placeholder="e.g. become a machine learning engineer"></textarea>
+          <button type="submit">Register</button>
+        </form>
+        <p class="small">Already registered? <a href="/login">Login</a></p>
+      </section>
+    </main>
+  </body>
+</html>

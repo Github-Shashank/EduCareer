@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | AI Career Advisor</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>AI Career Advisor</h1>
+      <form method="post" action="/logout">
+        <button class="secondary" type="submit">Logout</button>
+      </form>
+    </header>
+
+    <main class="dashboard">
+      <section class="panel">
+        <h2>Welcome, <%= user.name %></h2>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>Grade:</strong> <%= user.grade || 'Not set' %></p>
+        <p><strong>Interests:</strong> <%= user.interests.length ? user.interests.join(', ') : 'Not set' %></p>
+        <p><strong>Career Goal:</strong> <%= user.goals || 'Not set' %></p>
+      </section>
+
+      <section class="panel">
+        <h2>Ask Your AI Career Advisor</h2>
+        <form method="post" action="/advisor">
+          <label>Your question</label>
+          <textarea
+            name="prompt"
+            rows="4"
+            placeholder="Example: What should I learn in the next 3 months to become a data analyst?"
+            required
+          ></textarea>
+          <button type="submit">Get Advice</button>
+        </form>
+
+        <% if (advice) { %>
+        <div class="advice-box">
+          <h3>Advisor Response</h3>
+          <pre><%= advice %></pre>
+        </div>
+        <% } %>
+      </section>
+    </main>
+  </body>
+</html>
